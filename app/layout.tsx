@@ -1,5 +1,6 @@
 import {Nunito} from 'next/font/google'
 import ClientOnly from './components/ClientOnly'
+import Modal from './components/modals/Modals'
 import Navbar from './components/navbar/Navbar'
 import './globals.css'
 
@@ -21,6 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
       <ClientOnly>
+        <Modal isOpen title='Login Here' />
         <Navbar />
       </ClientOnly>
         {children}</body>
