@@ -1,4 +1,5 @@
 'use client'
+
 import * as React from 'react'
 import {AiOutlineMenu} from 'react-icons/ai'
 import Avatar from '../Avatar'
@@ -6,11 +7,11 @@ import { useState, useCallback } from 'react'
 import MenuItem from './MenuItem'
 import useRegisterModal from '../../hooks/useRegisterModal'
 import useLoginModal from '../../hooks/useLoginModal'
-import { User } from '@prisma/client'
+import { SafeUser } from '@/app/types'
 
 
 interface UserMenuProps {
-    currentUser?: User | null
+    currentUser?: SafeUser | null
 }
 const UserMenu: React.FC<UserMenuProps> = ({
     currentUser
@@ -19,11 +20,9 @@ const UserMenu: React.FC<UserMenuProps> = ({
     const loginModal = useLoginModal()
     const [isOpen, setIsOpen] = useState(false)
 
-    const toogleOpen = useCallback(
-      () => {
+    const toogleOpen = useCallback(() => {
         setIsOpen((value) => !value)
-      },[],
-    );
+      },[]);
     return (
         <div className="relative">
             <div className="flex flex-row items-center gap-3">
